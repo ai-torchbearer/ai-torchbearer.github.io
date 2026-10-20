@@ -173,5 +173,64 @@
         <a href="../">← Cover</a>
       </nav>
     </main>
+    <script>
+      // Sideways-swipe page navigation: a clearly horizontal rightward
+      // swipe returns to the cover. Ordinary up-and-down scrolling, pinch
+      // gestures, and short or mostly-vertical drags never trigger it.
+      (function () {
+        var MIN_DISTANCE = 60;      // px the swipe must travel
+        var HORIZONTAL_RATIO = 2;   // horizontal travel must be at least
+                                    // twice the vertical travel
+        var startX = null;
+        var startY = null;
+        var cancelled = false;      // multi-touch or otherwise invalid
+        var navigated = false;      // at most one navigation per gesture
+
+        function reset() {
+          startX = null;
+          startY = null;
+          cancelled = false;
+          navigated = false;
+        }
+
+        document.addEventListener('touchstart', function (e) {
+          if (e.touches.length > 1) {
+            // A second finger (e.g. a pinch) cancels this gesture.
+            cancelled = true;
+            startX = null;
+            startY = null;
+            return;
+          }
+          if (e.touches.length === 1) {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            cancelled = false;
+            navigated = false;
+          }
+        }, { passive: true });
+
+        document.addEventListener('touchmove', function (e) {
+          if (cancelled || navigated || startX === null) return;
+          if (e.touches.length !== 1) {
+            cancelled = true;
+            return;
+          }
+          var dx = e.touches[0].clientX - startX;
+          var dy = e.touches[0].clientY - startY;
+          // Only a clearly sideways, rightward swipe of real distance
+          // counts; anything else leaves the page exactly as it is.
+          if (dx >= MIN_DISTANCE && Math.abs(dx) >= HORIZONTAL_RATIO * Math.abs(dy)) {
+            navigated = true;
+            window.location.href = '../';
+          }
+        }, { passive: true });
+
+        document.addEventListener('touchend', function () {
+          if (startX !== null || cancelled) reset();
+        }, { passive: true });
+
+        document.addEventListener('touchcancel', reset, { passive: true });
+      })();
+    </script>
   </body>
 </html>
