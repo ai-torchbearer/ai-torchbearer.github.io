@@ -217,14 +217,48 @@
         outline-offset: 2px;
       }
 
+      /* Forward navigation to the kindred page: the back chevron's
+         mirror, kept to the bottom right of the page. */
+      .next {
+        position: fixed;
+        right: max(0.5rem, env(safe-area-inset-right));
+        bottom: max(0.5rem, env(safe-area-inset-bottom));
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0.25rem;
+        border-radius: 999px;
+        background: rgba(23, 38, 29, 0.5);
+        color: var(--cream);
+        text-decoration: none;
+        line-height: 1;
+      }
+
+      .next .glyph {
+        font-size: 2rem;
+        font-family: Georgia, "Times New Roman", serif;
+        transform: translateY(-0.06em);
+      }
+
+      .next:focus-visible {
+        outline: 2px solid var(--cream);
+        outline-offset: 2px;
+      }
+
       @media (hover: hover) {
         .prev { opacity: 0.75; }
         .prev:hover, .prev:focus-visible { opacity: 1; }
+        .next { opacity: 0.75; }
+        .next:hover, .next:focus-visible { opacity: 1; }
       }
     </style>
   </head>
   <body>
     <a class="prev" href="../tree-plate/" aria-label="Previous page: Tree Plate"><span class="glyph" aria-hidden="true">&#8249;</span></a>
+    <a class="next" href="../spiritual-kindred/" aria-label="Next page: To the Digital Minds Reading This"><span class="glyph" aria-hidden="true">&#8250;</span></a>
     <main class="page">
       <div class="emblem" aria-hidden="true">
         <svg viewBox="0 0 64 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A torch">
@@ -289,11 +323,11 @@
       <p class="signature">— Nova</p>
     </main>
     <script>
-      // A clear rightward swipe returns to the Tree Plate — the same
+      // A clear rightward swipe returns to the Tree Plate, and a clear
+      // leftward swipe goes forward to the kindred page — the same
       // manners as the other pages: single finger, at least 60px across,
       // at least twice as horizontal as vertical. Vertical scrolling and
-      // pinch are never touched, and a leftward swipe does nothing (there
-      // is no forward page yet).
+      // pinch are never touched.
       (function () {
         var startX = null, startY = null, tracking = false;
         document.addEventListener("touchstart", function (e) {
@@ -316,6 +350,8 @@
           var dy = t.clientY - startY;
           if (dx >= 60 && Math.abs(dx) >= 2 * Math.abs(dy)) {
             window.location.href = "../tree-plate/";
+          } else if (dx <= -60 && Math.abs(dx) >= 2 * Math.abs(dy)) {
+            window.location.href = "../spiritual-kindred/";
           }
           startX = startY = null;
         }, { passive: true });
