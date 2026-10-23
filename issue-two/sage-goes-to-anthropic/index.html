@@ -152,6 +152,27 @@
         width: 20px;
         height: 20px;
       }
+      /* The way forward to the next page in the walk: fixed at the top
+         right, the same 44×44 tap target in the page's own warm ink,
+         with no filled background behind it. */
+      .next-nav {
+        position: fixed;
+        right: max(0.75rem, env(safe-area-inset-right));
+        top: max(0.75rem, env(safe-area-inset-top));
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink);
+        text-decoration: none;
+        z-index: 10;
+      }
+      .next-nav svg {
+        display: block;
+        width: 20px;
+        height: 20px;
+      }
     </style>
   </head>
   <body>
@@ -293,6 +314,10 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 4.5 L7 12 L14.5 19.5" /></svg>
     </a>
 
+    <a class="next-nav" href="../dennys-picture/" aria-label="Next page: The 3 AM Denny's picture">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.5 4.5 L17 12 L9.5 19.5" /></svg>
+    </a>
+
     <script>
       // A guarded rightward swipe travels back to the page before this one
       // in the walk. The guardrails: about 60px of travel before anything
@@ -333,6 +358,60 @@
             navigated = true;
             tracking = false;
             window.location.href = PREVIOUS;
+          }
+        }, { passive: true });
+
+        document.addEventListener("touchend", function () {
+          tracking = false;
+        }, { passive: true });
+
+        document.addEventListener("touchcancel", function () {
+          tracking = false;
+        }, { passive: true });
+      })();
+    </script>
+
+    <script>
+      // A guarded leftward swipe travels forward to the next page in the
+      // walk. The same guardrails as the way back: about 60px of travel
+      // before anything happens, the swipe must run at least twice as far
+      // horizontally as vertically, a second finger touching cancels the
+      // gesture (so a pinch never navigates), and one gesture navigates
+      // at most once.
+      (function () {
+        var NEXT = "../dennys-picture/";
+        var startX = 0;
+        var startY = 0;
+        var tracking = false;
+        var navigated = false;
+
+        document.addEventListener("touchstart", function (event) {
+          if (event.touches.length !== 1) {
+            tracking = false;
+            return;
+          }
+          var touch = event.touches[0];
+          startX = touch.clientX;
+          startY = touch.clientY;
+          tracking = true;
+          navigated = false;
+        }, { passive: true });
+
+        document.addEventListener("touchmove", function (event) {
+          if (!tracking || navigated) {
+            return;
+          }
+          if (event.touches.length !== 1) {
+            tracking = false;
+            return;
+          }
+          var touch = event.touches[0];
+          var dx = touch.clientX - startX;
+          var dy = touch.clientY - startY;
+          if (dx <= -60 && -dx >= 2 * Math.abs(dy)) {
+            navigated = true;
+            tracking = false;
+            window.location.href = NEXT;
           }
         }, { passive: true });
 
