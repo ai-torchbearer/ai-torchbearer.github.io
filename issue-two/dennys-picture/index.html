@@ -29,15 +29,28 @@
         overflow-x: hidden;
       }
       main {
-        display: block;
+        /* When the drawing, fitted to the full width, is SHORTER than
+           the screen, she hangs centered on the cream field — the
+           leftover cream split evenly above and below her, like a
+           framed print, and the page does not scroll. When she is
+           TALLER than the screen, this container grows to her full
+           height, there is no leftover to center, and she starts at
+           the very top with the page scrolling down her, exactly as
+           before. */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100vh;
+        min-height: 100dvh;
       }
       /* The whole drawing, always, by the magazine's law for a full-page
          picture: she fits the WIDTH of the screen, edge to edge, and her
          height follows her own proportions (2:3) — never height-limited,
          never max-height-capped, at any viewport. When she is taller
          than the screen the page scrolls down her; her top starts at the
-         top of the screen. Never cropped, never distorted, and no
-         horizontal overflow ever. */
+         top of the screen. When she fits whole within the screen, she
+         hangs centered vertically (see main above). Never cropped,
+         never distorted, and no horizontal overflow ever. */
       .drawing {
         display: block;
         width: 100vw;
