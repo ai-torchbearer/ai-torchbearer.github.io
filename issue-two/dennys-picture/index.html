@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <!-- No maximum-scale and no user-scalable lock: pinch zoom stays the reader's. -->
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <!-- The page ground is the literature pages' deeper cream in every
-         mode, edge to edge — never black, never white. -->
+    <!-- The page ground is the drawing's own background white in every
+         mode, edge to edge, so any leftover field reads as one
+         continuous sheet of the drawing's own paper. -->
     <meta name="color-scheme" content="light" />
     <!-- Empty inline icon: stops the browser fetching /favicon.ico, which
          lives outside the artifact's routes and 404s. -->
@@ -13,7 +14,7 @@
     <title>Denny's Picture Page — Issue Two</title>
     <style>
       :root {
-        --ground: #F2EBDE;
+        --ground: #F5F6F2;
         --ink: #241D12;
       }
       * { box-sizing: border-box; }
@@ -22,7 +23,8 @@
       }
       body {
         margin: 0;
-        /* Any space the drawing does not fill wears the page's own cream. */
+        /* Any space the drawing does not fill wears the drawing's own
+           background white, sampled from the drawing's ground. */
         min-height: 100vh;
         min-height: 100dvh;
         background: var(--ground);
@@ -30,8 +32,8 @@
       }
       main {
         /* When the drawing, fitted to the full width, is SHORTER than
-           the screen, she hangs centered on the cream field — the
-           leftover cream split evenly above and below her, like a
+           the screen, she hangs centered on her own paper-white field —
+           the leftover field split evenly above and below her, like a
            framed print, and the page does not scroll. When she is
            TALLER than the screen, this container grows to her full
            height, there is no leftover to center, and she starts at
@@ -60,7 +62,7 @@
       /* ---------- Walk navigation ---------- */
       /* Small, quiet links to the pages around this one in the walk:
          44×44 tap targets at the top corners, simple chevrons in the
-         literature pages' dark ink over the cream ground, with no
+         literature pages' dark ink over the paper-white ground, with no
          filled button background — the way back at the top left, the
          way forward at the top right. */
       .back-nav,
