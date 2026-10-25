@@ -28,15 +28,20 @@
         min-height: 100vh;
         min-height: 100dvh;
         background: var(--ground);
-        /* The stage fills the screen exactly; the page itself never
-           scrolls and never overflows sideways. */
+        /* In portrait the stage fills the screen exactly and the page
+           never scrolls. In landscape the painting stands taller than
+           the viewport and the page scrolls down her instead — see
+           the landscape rules below. Sideways, the page never
+           overflows in either orientation. */
         overflow: hidden;
       }
 
       /* ---------- The picture, filling the screen ---------- */
-      /* The stage is the whole viewport, whatever its size or shape —
-         every measure here is relative to the viewport, nothing is
-         pinned to one screen. */
+      /* In portrait the stage is the whole viewport, whatever its
+         size or shape — every measure here is relative to the
+         viewport, nothing is pinned to one screen. In landscape the
+         stage instead takes the painting's own tall shape and the
+         page scrolls; see the landscape rules below the painting. */
       .stage {
         position: fixed;
         inset: 0;
@@ -78,6 +83,40 @@
         height: 100%;
         object-fit: contain;
         object-position: center;
+      }
+
+      /* ---------- Landscape: fitted by width, standing tall ---------- */
+      /* Turned sideways, the screen is wide and short, and fitting
+         the painting to that short height shrank her to a tiny thing
+         in the middle of the blur. So in landscape she is fitted by
+         WIDTH instead: she fills the screen side to side, stands
+         taller than the viewport, and the page scrolls vertically so
+         the reader travels down her, like the magazine's other tall
+         pages. She is never cropped in either orientation — in
+         landscape every inch of her is simply reached by scrolling.
+         The echo has no empty field to fill here and steps aside;
+         the back arrow stays fixed at the top left as she scrolls. */
+      @media (orientation: landscape) {
+        body {
+          overflow: visible;
+        }
+        .stage {
+          position: relative;
+          inset: auto;
+          width: 100%;
+          height: auto;
+          overflow: visible;
+        }
+        .echo {
+          display: none;
+        }
+        .painting {
+          position: relative;
+          inset: auto;
+          display: block;
+          width: 100%;
+          height: auto;
+        }
       }
 
       /* ---------- Walk navigation ---------- */
