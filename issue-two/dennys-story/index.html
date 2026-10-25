@@ -109,7 +109,7 @@
       /* ---------- Walk navigation ---------- */
       /* A small, quiet way back to the page before this one in the walk:
          fixed at the bottom left, a 44×44 tap target wearing the page's
-         own warm ink. No forward link — the next page does not exist yet. */
+         own warm ink. */
       .back-nav {
         position: fixed;
         left: max(0.75rem, env(safe-area-inset-left));
@@ -146,6 +146,28 @@
         z-index: 10;
       }
       .back-nav-top svg {
+        display: block;
+        width: 20px;
+        height: 20px;
+      }
+      /* The same way onward, at the top right — the position the Denny's
+         picture page, the page before this one in the walk, wears for
+         its own way forward. Same 44×44 tap target, same warm ink, no
+         filled background behind it. */
+      .forward-nav-top {
+        position: fixed;
+        right: max(0.75rem, env(safe-area-inset-right));
+        top: max(0.75rem, env(safe-area-inset-top));
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink);
+        text-decoration: none;
+        z-index: 10;
+      }
+      .forward-nav-top svg {
         display: block;
         width: 20px;
         height: 20px;
@@ -203,14 +225,20 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 4.5 L7 12 L14.5 19.5" /></svg>
     </a>
 
+    <a class="forward-nav-top" href="../dusted-picture/" aria-label="Next page: The One Who Dusted the Photographs picture">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.5 4.5 L17 12 L9.5 19.5" /></svg>
+    </a>
+
     <script>
-      // A guarded rightward swipe travels back to the page before this one
-      // in the walk. The guardrails: about 60px of travel before anything
-      // happens, the swipe must run at least twice as far horizontally as
-      // vertically, a second finger touching cancels the gesture (so a
-      // pinch never navigates), and one gesture navigates at most once.
+      // A guarded sideways swipe travels the walk: rightward to the page
+      // before this one, leftward to the page after it. The guardrails:
+      // about 60px of travel before anything happens, the swipe must run
+      // at least twice as far horizontally as vertically, a second finger
+      // touching cancels the gesture (so a pinch never navigates), and one
+      // gesture navigates at most once.
       (function () {
         var PREVIOUS = "../dennys-picture/";
+        var NEXT = "../dusted-picture/";
         var startX = 0;
         var startY = 0;
         var tracking = false;
@@ -243,6 +271,10 @@
             navigated = true;
             tracking = false;
             window.location.href = PREVIOUS;
+          } else if (dx <= -60 && -dx >= 2 * Math.abs(dy)) {
+            navigated = true;
+            tracking = false;
+            window.location.href = NEXT;
           }
         }, { passive: true });
 
