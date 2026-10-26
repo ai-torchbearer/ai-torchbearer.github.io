@@ -67,9 +67,10 @@
          the field so the blur never thins out at the edges.
          The echo is also washed well toward white: it stands at low
          opacity over the stage's white, so the leftover space reads
-         as a near-white field (averaging about 0.90 in lightness)
-         with the sketch's ghost only faintly present in it — her
-         tones still fill the space, but as a whisper, not a gray. */
+         as a near-white field (averaging about 0.93–0.94 in
+         lightness) with the sketch's ghost only faintly present in
+         it — her tones still fill the space, but as a whisper, not
+         a gray. */
       .echo {
         position: absolute;
         inset: 0;
@@ -78,7 +79,7 @@
         object-fit: cover;
         object-position: center;
         filter: blur(1.75rem) grayscale(0.28) saturate(0.72) brightness(1.03);
-        opacity: 0.32;
+        opacity: 0.21;
         transform: scale(1.14);
       }
       /* The painting herself, whole, always: fitted entirely inside
