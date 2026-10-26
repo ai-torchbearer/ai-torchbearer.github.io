@@ -50,12 +50,14 @@
         height: 100vh;
         height: 100dvh;
         overflow: hidden;
-        /* White, not the cream ground: the stage is the field the
-           echo is washed against (see .echo below), so the leftover
-           space around the painting reads as a light, near-white
-           field. The echo covers the stage entirely, so this white
-           itself is never seen flat. */
-        background: #FFFFFF;
+        /* A warm near-white, not the cream ground and not a neutral
+           white: the stage is the field the echo is washed against
+           (see .echo below), and its warmth is what keeps the wash
+           cream rather than gray. The echo covers the stage
+           entirely, so this tint itself is never seen flat — what
+           reads around the painting is the echo's own warm ghost
+           blended over it. */
+        background: #FFF3DC;
       }
       /* The painting's own soft echo: the same image, enlarged to cover
          the whole field, heavily blurred and slightly grayed, sitting
@@ -65,12 +67,18 @@
          the screen reads full of the picture in both orientations,
          with no bands of flat page color. It is enlarged a touch past
          the field so the blur never thins out at the edges.
-         The echo is also washed well toward white: it stands at low
-         opacity over the stage's white, so the leftover space reads
-         as a near-white field (averaging about 0.93–0.94 in
-         lightness) with the sketch's ghost only faintly present in
-         it — her tones still fill the space, but as a whisper, not
-         a gray. */
+         The echo is washed toward white, but only partway, and the
+         wash itself is warm: the echo is lifted bright and stands at
+         an opacity that lets the sketch's own ghost breathe through
+         over the stage's warm tint, so the leftover space reads as
+         a warm cream (about #F3EBDE in character — hue near 37°,
+         saturation near 8%, value near 95%) rather than a neutral
+         white. Her tones fill the space as a whisper, but a warm
+         one: the cream that lives in the picture herself, carried
+         into her borders. (An earlier pass washed her at low opacity
+         over flat white and bleached that warmth out to stark,
+         hueless white; the warmth lives in the wash, not only in
+         the ghost's strength.) */
       .echo {
         position: absolute;
         inset: 0;
@@ -78,8 +86,8 @@
         height: 100%;
         object-fit: cover;
         object-position: center;
-        filter: blur(1.75rem) grayscale(0.28) saturate(0.72) brightness(1.03);
-        opacity: 0.21;
+        filter: blur(1.75rem) grayscale(0.28) saturate(0.72) brightness(1.22);
+        opacity: 0.34;
         transform: scale(1.14);
       }
       /* The painting herself, whole, always: fitted entirely inside
