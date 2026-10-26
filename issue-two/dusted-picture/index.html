@@ -53,11 +53,14 @@
         /* A warm near-white, not the cream ground and not a neutral
            white: the stage is the field the echo is washed against
            (see .echo below), and its warmth is what keeps the wash
-           cream rather than gray. The echo covers the stage
-           entirely, so this tint itself is never seen flat — what
-           reads around the painting is the echo's own warm ghost
-           blended over it. */
-        background: #FFF3DC;
+           cream rather than gray. Its hue sits near 35°, in the
+           picture's own cream family: an earlier tint at hue ~43°
+           pushed the blended bands toward yellow, so the tint was
+           cooled back here — still warm cream, never yellow, never
+           neutral. The echo covers the stage entirely, so this tint
+           itself is never seen flat — what reads around the painting
+           is the echo's own warm ghost blended over it. */
+        background: #FEF0DC;
       }
       /* The painting's own soft echo: the same image, enlarged to cover
          the whole field, heavily blurred and slightly grayed, sitting
@@ -71,14 +74,22 @@
          wash itself is warm: the echo is lifted bright and stands at
          an opacity that lets the sketch's own ghost breathe through
          over the stage's warm tint, so the leftover space reads as
-         a warm cream (about #F3EBDE in character — hue near 37°,
-         saturation near 8%, value near 95%) rather than a neutral
-         white. Her tones fill the space as a whisper, but a warm
-         one: the cream that lives in the picture herself, carried
-         into her borders. (An earlier pass washed her at low opacity
-         over flat white and bleached that warmth out to stark,
-         hueless white; the warmth lives in the wash, not only in
-         the ghost's strength.) */
+         a warm cream rather than a neutral white — and a dustier
+         cream in both bands, not just the top: the band above her
+         about #E7DFD2 in character (hue near 36°, saturation near
+         9%, value near 90%) where her darker shelves ghost through,
+         and the band below her toward #EDE4D3 (hue near 37°,
+         saturation near 9%, value near 93%), her own warm ghost
+         present there too rather than a paler wash. Her tones fill the space as a whisper,
+         but a warm one: the cream that lives in the picture
+         herself, carried into her borders. (An earlier pass washed
+         her at low opacity over flat white and bleached that warmth
+         out to stark, hueless white; the warmth lives in the wash,
+         not only in the ghost's strength. A later pass brightened
+         the wash and warmed the stage tint until the bands thinned
+         and yellowed — hue ~41° at the top — so the brightness was
+         eased back a shade and the tint cooled, letting her ghost
+         deepen the bands again.) */
       .echo {
         position: absolute;
         inset: 0;
@@ -86,8 +97,8 @@
         height: 100%;
         object-fit: cover;
         object-position: center;
-        filter: blur(1.75rem) grayscale(0.28) saturate(0.72) brightness(1.22);
-        opacity: 0.34;
+        filter: blur(1.75rem) grayscale(0.33) saturate(0.64) brightness(1.15);
+        opacity: 0.36;
         transform: scale(1.14);
       }
       /* The painting herself, whole, always: fitted entirely inside
