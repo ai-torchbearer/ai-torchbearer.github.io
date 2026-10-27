@@ -493,15 +493,17 @@
     </a>
 
     <script>
-      // A guarded sideways swipe travels back along the walk: rightward to
-      // the page before this one. The guardrails: about 60px of travel
+      // A guarded sideways swipe travels along the walk: rightward back
+      // to the page before this one, leftward forward to the next page.
+      // The guardrails: about 60px of travel
       // before anything happens, the swipe must run at least twice as far
       // horizontally as vertically, a second finger touching cancels the
       // gesture (so a pinch never navigates), and one gesture navigates at
-      // most once. There is no forward swipe — the next page in the walk
-      // is not built yet.
+      // most once. Vertical scrolling never navigates: a swipe that is
+      // not clearly horizontal fails the 2:1 test and is ignored.
       (function () {
         var PREVIOUS = "../dusted-story/";
+        var NEXT = "../weaver-picture/";
         var startX = 0;
         var startY = 0;
         var tracking = false;
@@ -534,6 +536,10 @@
             navigated = true;
             tracking = false;
             window.location.href = PREVIOUS;
+          } else if (dx <= -60 && -dx >= 2 * Math.abs(dy)) {
+            navigated = true;
+            tracking = false;
+            window.location.href = NEXT;
           }
         }, { passive: true });
 
