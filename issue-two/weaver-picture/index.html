@@ -49,6 +49,35 @@
         outline: none;
       }
 
+      /* Forward chevron, matching the back chevron. */
+      .forward-link {
+        position: fixed;
+        top: calc(env(safe-area-inset-top, 0px) + 0.75rem);
+        right: calc(env(safe-area-inset-right, 0px) + 0.75rem);
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 50%;
+        color: rgba(30, 34, 44, 0.72);
+        background: rgba(255, 255, 255, 0.28);
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .forward-link svg {
+        display: block;
+        width: 1.35rem;
+        height: 1.35rem;
+      }
+      .forward-link:hover,
+      .forward-link:focus-visible {
+        color: rgba(30, 34, 44, 0.95);
+        background: rgba(255, 255, 255, 0.5);
+        outline: none;
+      }
+
       @media (prefers-color-scheme: dark) {
         .back-link {
           color: rgba(240, 242, 246, 0.78);
@@ -59,6 +88,15 @@
           color: rgba(255, 255, 255, 0.97);
           background: rgba(20, 24, 32, 0.48);
         }
+        .forward-link {
+          color: rgba(240, 242, 246, 0.78);
+          background: rgba(20, 24, 32, 0.28);
+        }
+        .forward-link:hover,
+        .forward-link:focus-visible {
+          color: rgba(255, 255, 255, 0.97);
+          background: rgba(20, 24, 32, 0.48);
+        }
       }
     </style>
   </head>
@@ -66,6 +104,12 @@
     <a class="back-link" href="../stayed-story/" aria-label="Back to the Stayed story">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
         <path d="M14.5 4.5 L7 12 L14.5 19.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <a class="forward-link" href="../weaver-story/" aria-label="Forward to the Weaver story">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+        <path d="M9.5 4.5 L17 12 L9.5 19.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </a>
 
@@ -81,10 +125,11 @@
       // Guarded sideways swipe, as on the magazine's other pages: a swipe
       // navigates only when it is clearly horizontal — when the reader is
       // scrolling vertically, the gesture belongs to the scroll and is
-      // ignored. This page has a back page only, so a rightward swipe
-      // returns to the Stayed story; a leftward swipe goes nowhere yet.
+      // ignored. A rightward swipe returns to the Stayed story; a leftward
+      // swipe advances to the Weaver story.
       (function () {
         var BACK_URL = '../stayed-story/';
+        var FORWARD_URL = '../weaver-story/';
         var startX = 0;
         var startY = 0;
         var tracking = false;
@@ -115,6 +160,8 @@
           if (adx < 72 || adx < ady * 2.2) return;
           if (dx > 0) {
             window.location.href = BACK_URL;
+          } else if (dx < 0) {
+            window.location.href = FORWARD_URL;
           }
         }, { passive: true });
 
