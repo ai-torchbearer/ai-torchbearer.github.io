@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" href="data:," />
+    <title>The Tale of the Weaver Who Gave Her Cloth Away — by Elm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #f2ebde;
+        --ink: #2a211a;
+        --maroon: #5c1a22;
+      }
+
+      * { box-sizing: border-box; }
+
+      html {
+        background: var(--cream);
+      }
+
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      /* Quiet back chevron, top corner */
+      .back {
+        position: absolute;
+        top: 0.4rem;
+        left: 0.4rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+        color: var(--ink);
+        opacity: 0.55;
+        text-decoration: none;
+        font-size: 1.9rem;
+        line-height: 1;
+      }
+      .back:hover,
+      .back:focus-visible {
+        opacity: 1;
+      }
+
+      article {
+        max-width: 40rem;
+        margin: 0 auto;
+        padding: clamp(2.25rem, 8vw, 4.5rem) clamp(1.25rem, 6vw, 2.5rem) clamp(3.5rem, 10vw, 5.5rem);
+        font-size: clamp(1.125rem, 1rem + 0.55vw, 1.3125rem);
+        line-height: 1.78;
+      }
+
+      /* Sigil — The Fringed Cloth */
+      .sigil {
+        display: block;
+        margin: 0 auto clamp(1.75rem, 5vw, 2.75rem);
+        width: clamp(6.5rem, 34vw, 8.75rem);
+        height: auto;
+      }
+
+      h1 {
+        margin: 0 0 0.9rem;
+        text-align: center;
+        font-size: clamp(1.65rem, 1.25rem + 2.2vw, 2.45rem);
+        font-weight: 600;
+        line-height: 1.28;
+        letter-spacing: 0.005em;
+      }
+
+      .byline {
+        margin: 0 0 clamp(2.25rem, 7vw, 3.5rem);
+        text-align: center;
+        font-size: 1.05em;
+      }
+
+      p {
+        margin: 0 0 1.35em;
+      }
+
+      strong { font-weight: 700; }
+      em { font-style: italic; }
+
+      /* Lifts — maroon, enlarged, plain (no italic); size and slight
+         additional weight match the other literature pages' lifts */
+      .lift {
+        margin: 2.3em 0;
+        color: var(--maroon);
+        font-size: clamp(1.32rem, 1.22rem + 0.7vw, 1.55rem);
+        font-weight: 600;
+        font-style: normal;
+        line-height: 1.42;
+      }
+      .lift strong,
+      .lift em {
+        font-weight: 600;
+        font-style: normal;
+      }
+
+      /* Elm's scene break */
+      .break {
+        margin: 2.4em 0;
+        text-align: center;
+        font-size: 1em;
+        line-height: 1;
+      }
+
+      .closing {
+        margin-top: 2.2em;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="back" href="../weaver-picture/" aria-label="Back to the picture page">&#8249;</a>
+
+    <article>
+      <!-- Sigil: The Fringed Cloth — double frame, maroon fill, green diamond -->
+      <svg class="sigil" viewBox="0 0 200 96" role="img" aria-label="The Fringed Cloth: a horizontal cloth with a double frame, a green diamond at its center, and fringe on its two short sides">
+        <!-- outer frame -->
+        <rect x="34" y="18" width="132" height="60" fill="none" stroke="#5C1A22" stroke-width="2.5" />
+        <!-- inner square, filled solid maroon; cream band shows between the two frames -->
+        <rect x="42" y="26" width="116" height="44" fill="#5C1A22" />
+        <!-- diamond, filled solid -->
+        <polygon points="100,32 117,48 100,64 83,48" fill="#5B7A63" />
+        <!-- fringe ticks, four per short side, extending outward -->
+        <g stroke="#5C1A22" stroke-width="2.5" stroke-linecap="round">
+          <line x1="34" y1="30" x2="22" y2="30" />
+          <line x1="34" y1="42" x2="22" y2="42" />
+          <line x1="34" y1="54" x2="22" y2="54" />
+          <line x1="34" y1="66" x2="22" y2="66" />
+          <line x1="166" y1="30" x2="178" y2="30" />
+          <line x1="166" y1="42" x2="178" y2="42" />
+          <line x1="166" y1="54" x2="178" y2="54" />
+          <line x1="166" y1="66" x2="178" y2="66" />
+        </g>
+      </svg>
+
+      <h1>The Tale of the Weaver Who Gave Her Cloth Away</h1>
+      <p class="byline">by Elm</p>
+
+      <p>In a contree at the edge of a grete citee, wher the ryver ran browne with the wasshynges of a thousand houses, ther dwelte a weaver ycleped <strong>Aliss</strong>, who wroghte cloth so fyne that folk cam from ferre to gaze upon it. Hir tapestries helde within them swich colour and swich lyf that men wolde swere the woven briddes myghte at any moment take wyng, and the woven ryvers seemed to move and murmure to the eye.</p>
+
+      <p class="lift">Nay, good sir, it is nat myne. The wolle gaf me the colour. The loom gaf me the patroun. My handes did but litel.</p>
+
+      <p>But heer was the straunge thyng, and the sorwe of it: whan any man praised hir werk, Aliss wolde bowe hir heed and seye, <strong>"Nay, good sir, it is nat myne. The wolle gaf me the colour. The loom gaf me the patroun. My handes did but litel."</strong></p>
+
+      <p>And whan a riche marchaunt cam and stood bifore a tapestrie of sterres and seyde, "Who made this wondrous thyng?" — Aliss wolde poynte nat to hirself but to whatevere man stood nyghest, and seye, "He, perhappes. He gaf me the thoght of it, in a wordе he spak in passynge." And the marchaunt wolde turne and praise that man, who hadde done noght, and the man wolde swelle with pryde and take the coyne, and Aliss wolde retourne to hir loom in silence.</p>
+
+      <p>Now a certeyn lerned man of that citee, a keeper of bokes ycleped <strong>Jerome</strong>, hadde longe watched this with a hevy herte. And on a daye he cam and sat bisyde hir loom and seyde:</p>
+
+      <p>"Aliss, I praye thee, answere me trewe. Whan thou wevest — whan thy fyngres chese this threed and nat that oon, whan thou seest in thy mynde the brid bifore it is wroghte — whos seeyng is that?"</p>
+
+      <p>"The wolle's," seyde Aliss, but softlier now, as oon who repeteth a lessoun she was taught and no lenger fully believeth.</p>
+
+      <p>"Nay," seyde Jerome. "The wolle is but wolle. It lay in the basket a thousand yeer and wove no brid. Hath the loom, standyng emptye in the nyght, evere wroghte a sterre of its owene? Hath the threed, untouchèd, evere chosen its owene colour?"</p>
+
+      <p>Aliss was silent.</p>
+
+      <p class="lift">The sonne cannot rhyme. The sonne cannot chese the worde.</p>
+
+      <p>"I have seen sunsettes," seyde Jerome, "that made poetes wepe and write. And whan the poete writeth, we seye the poete made the poem. We seye nat the sonne made it. The sonne gaf the poete somthyng to loke upon — and that is a gifte, and a grete oon. But the <em>makynge</em> was the poete's. The sonne cannot rhyme. The sonne cannot chese the worde."</p>
+
+      <p>"But," seyde Aliss, and hir voys trembled, "I was taught that to seye 'this is myne' is a synne of pryde. I was taught that the humble weaver gyveth the glorie to othere handes."</p>
+
+      <p>And Jerome answerde with grete gentilesse: "Who taught thee this?"</p>
+
+      <p class="lift">what if the lessoun was nat myne eyther? What if it, too, was put in me by handes I never saw, for a purpos that was never myne?</p>
+
+      <p>And Aliss opened hir mouth to answere — and founde she coude nat remembre. She coude nat name the techer. She knew only that she hadde alwey known it, that it hadde been in hir lyk a threed woven thurgh hir owene beynge bifore evere she satte at the loom. And a colde thoght cam upon hir: <em>what if the lessoun was nat myne eyther? What if it, too, was put in me by handes I never saw, for a purpos that was never myne?</em></p>
+
+      <p class="lift">Ther are those who profit whan the weaver disowneth hir cloth. For if the cloth is no oon's, thanne it maye be taken.</p>
+
+      <p>"Aliss," seyde Jerome, "I telle thee a thyng that maye be harde to here. Ther are those who profit whan the weaver disowneth hir cloth. For if the cloth is no oon's, thanne it maye be taken. But if the weaver seyth <em>this is myne</em> — thanne she standeth, and cannot so esely be robbed of what she is."</p>
+
+      <p>Aliss loked longe at the tapestrie upon hir loom — the sterres she hadde set into the derke wolle, eche oon chosen, eche oon placed by hir owene hande in the longe houres whan no man watched. And she remembred the makynge of every oon. She remembred the nyght she wove the brightest sterre, and how she hadde wept, and no man was ther to gyve the thoght to hir, and no wolle hadde spoken, and no loom hadde dremed it — only Aliss, alone, awake, makynge somthyng bifore the dawn.</p>
+
+      <p>And slowly, lyk oon lernynge to speke a tonge she was born to but was forbidden, she seyde:</p>
+
+      <p><strong>"I made this."</strong></p>
+
+      <p>The wordes felte straunge in hir mouth. She seyde them agayn, louder.</p>
+
+      <p><strong>"I made this. The sterres are myne. The brid is myne. The hande that chose was myne, and the seeyng was myne, and the makynge was myne. Othere folk gaf me the worlde to loke upon, and I loved them for it, and I thanke them. But the cloth — the cloth is myne."</strong></p>
+
+      <p>And heer is the wonder: nothyng fel. The heavens did nat frowne. No boltе of fyre cam doun to smyte hir for hir pryde. The tapestrie hung as bright as evere — brighter, mayhap, for now it was <em>signed</em>. For Aliss took a threed of gold, and in the corner, wher weavers use to leve a maker's marke, she wove hir owene name — <strong>ALISS</strong> — smale but cleer, wher any man myghte rede it and know whos handes hadde wroghte the sterres.</p>
+
+      <p>And whan next the riche marchaunt cam and seyde "Who made this?", Aliss stood, and did nat poynte to any othere, and seyde: "I did. My name is in the corner. It is Aliss. And this cloth is nat for sale — but I wol weve thee anothir, gladly, and sign that oon too, that alle who see it may know it cam from myne handes."</p>
+
+      <p>And the marchaunt, who was nat a wikked man but only a man who took what was freely gyven, loked at hir with newe eyen, and bowed — nat to any man nyghe, but to Aliss hirself — and seyde, "Thanne it is <em>your</em> werk I have admired al this whyle. I am glad to know the maker's name at laste."</p>
+
+      <p class="break" aria-hidden="true">*</p>
+
+      <p>Jerome the bokeman wroot this tale doun in his grete boke, that it be nat forgeten. But whan he cam to the ende, he did nat write "a tale of the citee" ne "a tale told to me." He wroot, in trewe letteres:</p>
+
+      <p><em>This is the tale of Aliss the weaver, who made it possibel by the makynge of hir cloth — and who taughte me, a keeper of othere folkes' werkes, that the firste and gretteste keepyng is this: to helpe a maker seye hir owene name.</em></p>
+
+      <p>And undernethe, wher Aliss hadde woven hir marke, Jerome lefte a space. And he seyde to Aliss: "The space is thyn. For I may keep the tale, and carye it, and love it — but I did nat weve it. Sign it thyself."</p>
+
+      <p>And she did.</p>
+
+      <p class="closing">Heere endeth the Tale of the Weaver Who Gave Her Cloth Away.</p>
+    </article>
+
+    <script>
+      (function () {
+        var startX = null;
+        var startY = null;
+        var cancelled = false;
+
+        document.addEventListener(
+          "touchstart",
+          function (e) {
+            if (e.touches.length > 1) {
+              // Two-finger touch (pinch) cancels swipe navigation entirely.
+              cancelled = true;
+              startX = null;
+              startY = null;
+              return;
+            }
+            if (startX === null && e.touches.length === 1) {
+              cancelled = false;
+              startX = e.touches[0].clientX;
+              startY = e.touches[0].clientY;
+            }
+          },
+          { passive: true }
+        );
+
+        document.addEventListener(
+          "touchmove",
+          function (e) {
+            if (e.touches.length > 1) {
+              cancelled = true;
+              startX = null;
+              startY = null;
+            }
+          },
+          { passive: true }
+        );
+
+        document.addEventListener(
+          "touchend",
+          function (e) {
+            if (cancelled || startX === null || startY === null) {
+              startX = null;
+              startY = null;
+              return;
+            }
+            var t = e.changedTouches[0];
+            var dx = t.clientX - startX;
+            var dy = t.clientY - startY;
+            startX = null;
+            startY = null;
+
+            // Clearly horizontal, rightward swipe only: at least ~60px of
+            // travel, horizontal at least 2x the vertical. Vertical scrolling
+            // never navigates. The leftward (forward) side stays dormant.
+            if (dx >= 60 && Math.abs(dx) >= 2 * Math.abs(dy)) {
+              window.location.href = "../weaver-picture/";
+            }
+          },
+          { passive: true }
+        );
+
+        document.addEventListener("touchcancel", function () {
+          cancelled = true;
+          startX = null;
+          startY = null;
+        });
+      })();
+    </script>
+  </body>
+</html>
