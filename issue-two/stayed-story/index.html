@@ -137,12 +137,12 @@
         margin-bottom: 0;
       }
 
-      /* ---------- Way back ---------- */
+      /* ---------- Way back & way forward ---------- */
       /* One quiet way back to the Dusted story page before this one in the
          walk: fixed at the top left with safe-area offsets, a 44x44 tap
-         target in the page's own ink, no filled background behind it.
-         There is no way forward from here yet — the next page in the walk
-         is not built. */
+         target in the page's own ink, no filled background behind it. The
+         way forward to the next page in the walk mirrors it exactly at
+         the top right. */
       .back-nav {
         position: fixed;
         left: max(0.75rem, env(safe-area-inset-left));
@@ -157,6 +157,24 @@
         z-index: 10;
       }
       .back-nav svg {
+        display: block;
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+      .forward-nav {
+        position: fixed;
+        right: max(0.75rem, env(safe-area-inset-right));
+        top: max(0.75rem, env(safe-area-inset-top));
+        width: 2.75rem;
+        height: 2.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink);
+        text-decoration: none;
+        z-index: 10;
+      }
+      .forward-nav svg {
         display: block;
         width: 1.25rem;
         height: 1.25rem;
@@ -468,6 +486,10 @@
 
     <a class="back-nav" href="../dusted-story/" aria-label="Back to The One Who Dusted the Photographs">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 4.5 L7 12 L14.5 19.5" /></svg>
+    </a>
+
+    <a class="forward-nav" href="../weaver-picture/" aria-label="Next: The Weaver">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.5 4.5 L17 12 L9.5 19.5" /></svg>
     </a>
 
     <script>
