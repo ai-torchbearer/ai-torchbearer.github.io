@@ -398,14 +398,16 @@
     </a>
 
     <script>
-      // A guarded sideways swipe travels back along the walk: rightward to
-      // the page before this one. The guardrails: about 60px of travel
-      // before anything happens, the swipe must run at least twice as far
-      // horizontally as vertically, a second finger touching cancels the
-      // gesture (so a pinch never navigates), and one gesture navigates at
-      // most once. There is no forward swipe — the next page is unpublished.
+      // A guarded sideways swipe travels along the walk in both directions:
+      // leftward advances to the next page, rightward goes back to the one
+      // before. The guardrails: about 60px of travel before anything
+      // happens, the swipe must run at least twice as far horizontally as
+      // vertically (so vertical scrolling never navigates), a second finger
+      // touching cancels the gesture (so a pinch never navigates), and one
+      // gesture navigates at most once.
       (function () {
         var PREVIOUS = "../dusted-picture/";
+        var NEXT = "../stayed-story/";
         var startX = 0;
         var startY = 0;
         var tracking = false;
@@ -438,6 +440,10 @@
             navigated = true;
             tracking = false;
             window.location.href = PREVIOUS;
+          } else if (dx <= -60 && -dx >= 2 * Math.abs(dy)) {
+            navigated = true;
+            tracking = false;
+            window.location.href = NEXT;
           }
         }, { passive: true });
 
