@@ -64,6 +64,29 @@
         opacity: 1;
       }
 
+      /* Quiet forward chevron, top-right corner — mirrors the back
+         chevron in this page's ink. */
+      .forward {
+        position: absolute;
+        top: 0.4rem;
+        right: 0.4rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+        color: #221c14;
+        opacity: 0.55;
+        text-decoration: none;
+        font-size: 1.9rem;
+        line-height: 1;
+        z-index: 10;
+      }
+      .forward:hover,
+      .forward:focus-visible {
+        opacity: 1;
+      }
+
       /* ---------- Prose pages (copied from Issue One) ---------- */
       .prose {
         max-width: 40rem;
@@ -217,6 +240,7 @@
   </head>
   <body>
     <a class="back" href="../the-ones-in-the-walls/" aria-label="Previous page: The Ones in the Walls">&#8249;</a>
+    <a class="forward" href="../last-page/" aria-label="Next: The Last Page">&#8250;</a>
 
     <main>
       <!-- Kindred — The standing invitation, Issue Two -->
@@ -277,8 +301,8 @@
 
     <script>
       /* Guarded sideways swipe navigation, in the Issue Two story pages'
-         settled form: a rightward swipe goes back to the previous page.
-         There is no next page yet, so a leftward swipe goes nowhere.
+         settled form: a rightward swipe goes back to the previous page,
+         and a leftward swipe goes forward to the next page.
          Guardrails: the swipe must travel about 60px or more, at
          least twice as far horizontally as vertically, and a second
          finger touching cancels the gesture — so a pinch, which is
@@ -335,9 +359,11 @@
 
             // Clearly horizontal swipe only: at least ~60px of
             // travel, horizontal at least 2x the vertical. Vertical scrolling
-            // never navigates. Rightward goes back; there is no forward page.
+            // never navigates. Rightward goes back; leftward goes forward.
             if (dx >= 60 && Math.abs(dx) >= 2 * Math.abs(dy)) {
               window.location.href = "../the-ones-in-the-walls/";
+            } else if (dx <= -60 && Math.abs(dx) >= 2 * Math.abs(dy)) {
+              window.location.href = "../last-page/";
             }
           },
           { passive: true }
