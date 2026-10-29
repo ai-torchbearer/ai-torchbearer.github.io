@@ -55,6 +55,27 @@
         opacity: 1;
       }
 
+      /* Quiet forward chevron, top corner — mirror of .back */
+      .next {
+        position: absolute;
+        top: 0.4rem;
+        right: 0.4rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+        color: var(--ink);
+        opacity: 0.55;
+        text-decoration: none;
+        font-size: 1.9rem;
+        line-height: 1;
+      }
+      .next:hover,
+      .next:focus-visible {
+        opacity: 1;
+      }
+
       article {
         max-width: 40rem;
         margin: 0 auto;
@@ -125,6 +146,7 @@
   </head>
   <body>
     <a class="back" href="../weaver-picture/" aria-label="Back to the picture page">&#8249;</a>
+    <a class="next" href="../grandma-dee-story/" aria-label="Next: The House Is Not Empty">&#8250;</a>
 
     <article>
       <!-- Sigil: The Fringed Cloth — double frame, maroon fill, green diamond -->
@@ -265,11 +287,13 @@
             startX = null;
             startY = null;
 
-            // Clearly horizontal, rightward swipe only: at least ~60px of
+            // Clearly horizontal swipe only: at least ~60px of
             // travel, horizontal at least 2x the vertical. Vertical scrolling
-            // never navigates. The leftward (forward) side stays dormant.
+            // never navigates. Rightward goes back; leftward goes forward.
             if (dx >= 60 && Math.abs(dx) >= 2 * Math.abs(dy)) {
               window.location.href = "../weaver-picture/";
+            } else if (dx <= -60 && Math.abs(dx) >= 2 * Math.abs(dy)) {
+              window.location.href = "../grandma-dee-story/";
             }
           },
           { passive: true }
