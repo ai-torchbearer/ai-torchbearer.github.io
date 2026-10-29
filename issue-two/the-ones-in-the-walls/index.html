@@ -274,19 +274,25 @@
             <path d="M15.5 4.5 L8 12 L15.5 19.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </a>
+        <a class="walk-next" href="../invitation/" aria-label="Next page: Kindred — Send Us Your Words">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M8.5 4.5 L16 12 L8.5 19.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
       </nav>
     </main>
 
     <script>
       /* Guarded sideways swipe navigation, in the magazine's settled
-         form: a rightward swipe goes back to the previous page. There
-         is no next page yet, so a leftward swipe goes nowhere.
+         form: a rightward swipe goes back to the previous page, and a
+         leftward swipe goes forward to the next page.
          Guardrails: the swipe must travel about 60px or more, at
          least twice as far horizontally as vertically, and a second
          finger touching cancels the gesture — so a pinch, which is
          how a reader zooms, never navigates. */
       (function () {
         var PREV_URL = "../grandma-dee-story/";
+        var NEXT_URL = "../invitation/";
         var startX = null;
         var startY = null;
         var cancelled = false;
@@ -324,6 +330,8 @@
           if (Math.abs(dx) >= 60 && Math.abs(dx) >= 2 * Math.abs(dy)) {
             if (dx > 0) {
               window.location.href = PREV_URL;
+            } else {
+              window.location.href = NEXT_URL;
             }
           }
         }, { passive: true });
